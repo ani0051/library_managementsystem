@@ -1,0 +1,6 @@
+DELIMITER //
+CREATE PROCEDURE CalculateOverdueFines()
+BEGIN
+    UPDATE Loans SET OverdueFine = DATEDIFF(NOW(), DueDate) * 0.25 WHERE DueDate < CURDATE() AND ReturnDate IS NULL;
+END //
+DELIMITER ;
