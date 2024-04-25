@@ -1,0 +1,1 @@
+SELECT * FROM Books WHERE Title LIKE '%search_term%' OR Author LIKE '%search_term%';
