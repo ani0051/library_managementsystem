@@ -1,0 +1,12 @@
+DELIMITER //
+CREATE PROCEDURE ReturnBook(
+    IN loan_id INT,
+    IN return_date DATE
+)
+BEGIN
+    UPDATE Books b
+    INNER JOIN Loans l ON b.BookID = l.BookID
+    SET b.AvailableQuantity = b.AvailableQuantity + 1, l.ReturnDate = return_date
+    WHERE l.LoanID = loan_id;
+END //
+DELIMITER ;
