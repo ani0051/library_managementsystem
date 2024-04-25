@@ -1,0 +1,14 @@
+DELIMITER //
+
+CREATE PROCEDURE CheckoutBook(
+    IN book_id INT,
+    IN borrower_id INT,
+    IN loan_date DATE,
+    IN due_date DATE
+)
+BEGIN
+    UPDATE Books SET AvailableQuantity = AvailableQuantity - 1 WHERE BookID = book_id;
+    INSERT INTO Loans (BookID, BorrowerID, LoanDate, DueDate) VALUES (book_id, borrower_id, loan_date, due_date);
+END //
+
+DELIMITER ;
